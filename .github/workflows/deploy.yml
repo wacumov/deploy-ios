@@ -90,11 +90,11 @@ jobs:
       uses: xavierLowmiller/xcodegen-action@1.1.2
       with:
         spec: project.yml
-        version: 2.35.0
+        version: 2.38.0
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "14.3"
+        xcode-version: "15.0"
     - name: Archive
       env:
         PROJECT_NAME: ${{ inputs.project-name }}
