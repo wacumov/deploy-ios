@@ -37,6 +37,8 @@ on:
         required: true
       p12-password:
         required: true
+      personal-access-token:
+        required: false
 
 jobs:
   deploy:
@@ -54,6 +56,8 @@ jobs:
     - name: Run Pre-Build Commands
       if: ${{ inputs.pre-build-commands != '' }}
       run: ${{ inputs.pre-build-commands }}
+      env:
+        PAT: ${{ secrets.personal-access-token }}
     - name: Set up provisioning profile
       env:
         KEYCHAIN_PASSWORD: ${{ secrets.keychain-password }}
