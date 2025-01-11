@@ -101,6 +101,16 @@ jobs:
       with:
         spec: project.yml
         version: 2.42.0
+    - name: Cache pods
+      uses: actions/cache@v3
+      id: cocoapods-cache
+      with:
+        path: Pods
+        key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+    - name: Install pods
+      run: pod install
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
@@ -111,7 +121,7 @@ jobs:
         SCHEME: ${{ inputs.scheme }}
       run: |
         xcodebuild archive \
-          -project $PROJECT_NAME.xcodeproj \
+          -workspace $PROJECT_NAME.xcworkspace \
           -scheme $SCHEME \
           -archivePath ./build/$APP_NAME.xcarchive \
           -destination "generic/platform=iOS" \
