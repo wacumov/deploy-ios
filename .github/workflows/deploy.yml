@@ -97,7 +97,7 @@ jobs:
           }
         commitChange: false
     - name: XcodeGen
-      uses: xavierLowmiller/xcodegen-action@1.2.3
+      uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
         spec: project.yml
         version: 2.42.0
