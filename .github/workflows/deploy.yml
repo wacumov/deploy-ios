@@ -97,7 +97,7 @@ jobs:
           }
         commitChange: false
     - name: XcodeGen
-      uses: xavierLowmiller/xcodegen-action@1.2.3
+      uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
         spec: project.yml
         version: 2.42.0
@@ -114,7 +114,7 @@ jobs:
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: "16.0"
+        xcode-version: "16.2"
     - name: Archive
       env:
         PROJECT_NAME: ${{ inputs.project-name }}
