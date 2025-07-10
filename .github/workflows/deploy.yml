@@ -100,7 +100,7 @@ jobs:
       uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
         spec: project.yml
-        version: 2.42.0
+        version: 2.43.0
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
