@@ -85,7 +85,7 @@ jobs:
       id: buildnumber
       run: echo "build_number=$(git log --oneline | wc -l | awk '{print $1}')" >> $GITHUB_OUTPUT
     - name: Set up project.yml
-      uses: fjogeleit/yaml-update-action@main
+      uses: fjogeleit/yaml-update-action@v0.16.1
       with:
         valueFile: project.yml
         changes: |
