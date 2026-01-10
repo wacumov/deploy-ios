@@ -1,6 +1,8 @@
 # Deploy iOS
 This reusable GitHub Actions workflow automates the process of building, signing, and deploying iOS apps to TestFlight.
 
+This workflow is intended for projects that use [XcodeGen](https://github.com/yonaskolb/XcodeGen).
+
 ## Usage
 To use this workflow, you need to call it from another workflow file in your repository (e.g., `.github/workflows/deploy-to-testflight.yml`):
 
