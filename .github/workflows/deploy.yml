@@ -24,6 +24,10 @@ on:
       pre-build-commands:
         required: false
         type: string
+      working-directory:
+        required: false
+        type: string
+        default: "."
     secrets:
       appleid-email:
         required: true
@@ -43,6 +47,9 @@ on:
 jobs:
   deploy:
     runs-on: macos-26
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
     env:
       APP_NAME: ${{ inputs.app-name }}
       BUNDLE_ID: ${{ inputs.bundle-id }}
@@ -87,7 +94,7 @@ jobs:
     - name: Set up project.yml
       uses: fjogeleit/yaml-update-action@v0.16.1
       with:
-        valueFile: project.yml
+        valueFile: ${{ inputs.working-directory }}/project.yml
         changes: |
           {
             "settings.base.PRODUCT_BUNDLE_IDENTIFIER": "${{ inputs.bundle-id }}",
@@ -99,7 +106,7 @@ jobs:
     - name: XcodeGen
       uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
-        spec: project.yml
+        spec: ${{ inputs.working-directory }}/project.yml
         version: 2.44.1
     - name: Cache pods
       uses: actions/cache@v3

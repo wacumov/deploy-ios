@@ -47,6 +47,7 @@ The following inputs are required to configure the deployment:
 | `provisioning-profile-name` | The name of the provisioning profile to use for signing. |
 | `scheme`                    | The Xcode scheme to build. |
 | `pre-build-commands`        | Optional: A string of commands to be executed before the build process begins. Useful for custom setup. |
+| `working-directory`         | Optional: The working directory for the workflow commands. Defaults to `.`. Useful if the `project.yml` isn't at the repository root. |
 
 ## Secrets
 The following secrets must be configured in your repository's "Settings > Secrets and variables > Actions" for the workflow to run successfully:
