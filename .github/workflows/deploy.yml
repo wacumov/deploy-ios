@@ -57,7 +57,7 @@ jobs:
       PROVISIONING_PROFILE_NAME: ${{ inputs.provisioning-profile-name }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
       with:
         fetch-depth: 0
     - name: Run Pre-Build Commands
@@ -107,7 +107,7 @@ jobs:
       uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
         spec: ${{ inputs.working-directory }}/project.yml
-        version: 2.44.1
+        version: 2.45.3
     - name: Cache pods
       uses: actions/cache@v3
       id: cocoapods-cache
@@ -119,9 +119,9 @@ jobs:
     - name: Install pods
       run: pod install
     - name: Set up Xcode
-      uses: maxim-lobanov/setup-xcode@v1.6.0
+      uses: maxim-lobanov/setup-xcode@v1.7.0
       with:
-        xcode-version: "26.2"
+        xcode-version: "26.4"
     - name: Archive
       env:
         PROJECT_NAME: ${{ inputs.project-name }}
