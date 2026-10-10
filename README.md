@@ -48,6 +48,8 @@ The following inputs are required to configure the deployment:
 | `scheme`                    | The Xcode scheme to build. |
 | `pre-build-commands`        | Optional: A string of commands to be executed before the build process begins. Useful for custom setup. |
 | `working-directory`         | Optional: The working directory for the workflow commands. Defaults to `.`. Useful if the `project.yml` isn't at the repository root. |
+| `runner`                    | Optional: The GitHub runner. Defaults to `macos-26`. |
+| `xcode-version`             | Optional: The Xcode version. Defaults to `26.4`. |
 
 ## Secrets
 The following secrets must be configured in your repository's "Settings > Secrets and variables > Actions" for the workflow to run successfully:
