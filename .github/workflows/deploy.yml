@@ -28,6 +28,18 @@ on:
         required: false
         type: string
         default: "."
+      runner:
+        required: false
+        type: string
+        default: "macos-26"
+      xcode-version:
+        required: false
+        type: string
+        default: "26.4"
+      xcodegen-spec:
+        required: false
+        type: string
+        default: "project.yml"
     secrets:
       appleid-email:
         required: true
@@ -46,7 +58,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: macos-26
+    runs-on: ${{ inputs.runner }}
     defaults:
       run:
         working-directory: ${{ inputs.working-directory }}
@@ -106,7 +118,7 @@ jobs:
     - name: XcodeGen
       uses: xavierLowmiller/xcodegen-action@1.2.4
       with:
-        spec: ${{ inputs.working-directory }}/project.yml
+        spec: ${{ inputs.working-directory }}/${{ inputs.xcodegen-spec }}
         version: 2.45.3
     - name: Cache pods
       uses: actions/cache@v3
@@ -121,7 +133,7 @@ jobs:
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1.7.0
       with:
-        xcode-version: "26.4"
+        xcode-version: ${{ inputs.xcode-version }}
     - name: Archive
       env:
         PROJECT_NAME: ${{ inputs.project-name }}
